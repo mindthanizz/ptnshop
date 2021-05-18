@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Admin</title>
+  <link href="css/main.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" />
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link href="css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+
+</head>
+
+<body>
+  <script src="dbscript.js"></script>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">
+      <img align="center" src="img/header-logo.png" alt="" width="120">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dress.html">Dress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tops.html">Tops</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="bottoms.html">Bottoms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="admin.html">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="contact-page">
+    <div class="right-content">
+      <div class="container">
+        <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Add product</h1>
+        </div>
+          <p id="hh"></p> 
+        <form id="frm1">
+          <table id="tblinsert"> 
+            <tr>  
+                <td id="tdid" style="display:none">  
+                    <select id="ddlid" onchange="myFunction()"></select>  
+                </td>  
+            </tr>  
+
+          <div class="form-group ">
+            <tr id="rowID">
+              <label for="inputProductID">Product ID</label>
+              <input type="number" class="form-control" id="tbID" placeholder="Product ID">
+            </tr>
+          </div>
+
+          <div class="form-group ">
+            <tr id="rowName">
+              <label for="inputProductName">Product Name</label>
+              <input type="text" class="form-control" id="tbName" placeholder="Product Name">
+            </tr>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <tr id="rowPrice">
+              <label for="inputProductPrice">Product Price</label>
+              <input type="number" class="form-control" id="tbPrice" placeholder="Product Price">
+              </tr>
+            </div>
+            <div class="form-group col-md-6">
+              <tr id="rowSize">
+                <label for="inputProductSize">Product Size (only S, M, L or XL)</label>
+                <input type="text" class="form-control" id="tbSize" placeholder="Product Size">
+                </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <tr id="rowMat">
+              <label for="inputProductMaterial">Product Material</label>
+              <input type="text" class="form-control" id="tbMat" placeholder="Product Material (cotton, linen, wool, etc.)">
+              </tr>
+            </div>
+
+            <div class="form-group col-md-6">
+              <tr id="rowCate">
+              <label for="inputProductCategories">Product Category (only Dress, Tops or Bottoms)</label>
+              <input type="text" class="form-control" id="tbCat" placeholder="Product Categories">
+              </tr>
+            </div>
+          </div>
+        
+          </table>
+        </form>
+        <br />  
+    <button id="btnInsert" onclick="Insert()" style="color:green;display:block"><b>Add Product</b></button>  
+    <button id="btnupdate" onclick="updte()" style="color:blue;display:none">Update Product</button>  
+    <button id="btndel" onclick="del()" style="color:red;display:none">Delete Product</button>  
+      
+    <br /><br />  
+    <button id="btnupdateshw" onclick="showupdte()" style="color:blue">Update Product details</button>  
+    <button id="btndeleteshw" onclick="showdel()" style="color:red">Delete Product details</button>  
+    <button id="btninsertshw" onclick="showin()" style="color:green;display:none"><b>Add Product details</b></button>  
+
+      </div>
+    </div>
+  </div>
+
+    <table id="tablegrid" class="display nowrap" style="width:100%">  
+      <thead>
+        <tr>
+            <th>ID</th>  
+            <th>Date & Time</th>  
+            <th>Name</th>  
+            <th>Price</th>  
+            <th>Size</th>
+            <th>Material</th>
+            <th>Category</th>
+        </tr>
+      </thead>    
+    </table>  
+    <br />  
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3">
+  <div class="container">
+    <p>Let's Enjoy with us! <a href="index.html"> ptnshop.com</a></p>
+  </div>
+</footer>
+</body>
+</html>
